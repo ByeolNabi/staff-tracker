@@ -1,0 +1,84 @@
+#root {
+  width: 400px;
+  height: 800px;
+  margin: 0;
+  /* 패딩 조정 또는 제거 */
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  outline: 1px solid red;
+}
+
+header{
+  display: flex;
+  flex-direction : row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.go-space{
+  width: 100%;
+  padding: 5px;
+  height: 50%; /* main 영역의 절반 차지 */
+}
+
+.box-top{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.box-mid{
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-X: auto;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.person-card{
+  width : 120px;
+  height : 160px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-top{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-mid{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.leave-space{
+  width: 100%;
+  padding: 5px;
+}
+

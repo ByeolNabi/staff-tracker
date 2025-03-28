@@ -4,14 +4,13 @@ function HomePage() {
     return (
         <>
             <main>
-                <div className="go-space">출근 공간
-                    <div>
-                        박스
+                <div className="go-space">
+                    <div className="box">
                         <div className="box-top">
                             <div>공석</div>
                             <div>오늘 날짜</div>
                         </div>
-                        <div className="box-mid">박스 중단
+                        <div className="box-mid">
                             <PersonCard />
                             <PersonCard />
                             <PersonCard />

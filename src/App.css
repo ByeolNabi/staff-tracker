@@ -11,38 +11,51 @@
   text-align: center;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
   outline: 1px solid red;
 }
 
-header{
+header {
   display: flex;
-  flex-direction : row;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-main{
+main {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
 }
 
-.go-space{
+.go-space {
   width: 100%;
   padding: 5px;
-  height: 50%; /* main 영역의 절반 차지 */
+  height: 50%;
+  /* main 영역의 절반 차지 */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.box-top{
+.box {
+  width: 100%;
+  padding:5px;
+}
+
+.box-top {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.box-mid{
+.box-mid {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -52,48 +65,48 @@ main{
   overflow-x: auto;
   gap: 10px;
   white-space: nowrap;
-  padding: 5px; /* 내부 여백 추가 */
+  padding: 5px;
+  /* 내부 여백 추가 */
 }
 
-.person-card{
-  width : 120px;
-  height : 160px;
+.person-card {
+  width: 120px;
+  height: 160px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
 }
 
-.card-top{
-  display:flex;
+.card-top {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.card-mid{
-  display:flex;
+.card-mid {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
 }
 
-.box-bottom{
+.box-bottom {
   padding: 5px;
 }
 
-.count-graph{
+.count-graph {
   display: row;
 }
 
-.graph-top{
+.graph-top {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.leave-space{
+.leave-space {
   width: 100%;
   padding: 5px;
 }
-

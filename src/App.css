@@ -43,15 +43,16 @@ main{
 }
 
 .box-mid{
-  width: 400px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   flex-wrap: nowrap;
-  overflow-X: auto;
+  overflow-x: auto;
   gap: 10px;
   white-space: nowrap;
+  padding: 5px; /* 내부 여백 추가 */
 }
 
 .person-card{
@@ -75,6 +76,20 @@ main{
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+}
+
+.box-bottom{
+  padding: 5px;
+}
+
+.count-graph{
+  display: row;
+}
+
+.graph-top{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .leave-space{

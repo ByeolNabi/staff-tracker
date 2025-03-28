@@ -1,5 +1,5 @@
 import './App.css'
-import Header from './pages/Components/Header'
+import Header from './Components/Header'
 import HomePage from './pages/Homepage'
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Header />
-        <HomePage />
+      <HomePage />
     </>
   )
 }

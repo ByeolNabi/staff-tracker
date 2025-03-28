@@ -1,6 +1,11 @@
-import PersonCard from "./Components/PersonCard";
+import PersonCard from "../Components/PersonCard";
 
 function HomePage() {
+    const personInfoList = [
+        { userName: "김대규", date: new Date() },
+        { userName: "장현오", date: new Date() },
+        { userName: "김도현", date: new Date() },
+    ]
     return (
         <>
             <main>
@@ -11,12 +16,11 @@ function HomePage() {
                             <div>오늘 날짜</div>
                         </div>
                         <div className="box-mid">
-                            <PersonCard />
-                            <PersonCard />
-                            <PersonCard />
-                            <PersonCard />
-                            <PersonCard />
-                            <PersonCard />
+                            <div className="deck">
+                                {personInfoList.map((personInfo, index) => (
+                                    <PersonCard key={index} personInfo={personInfo} />
+                                ))}
+                            </div>
                         </div>
                         <div className="box-bottom">
                             <div className="count-graph">

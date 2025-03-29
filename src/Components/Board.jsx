@@ -1,4 +1,5 @@
 import PersonCard from "../Components/PersonCard";
+import Graph from "./Graph";
 
 function Board(props) {
     const { type, personInfoList, onButtonClick } = props
@@ -25,17 +26,7 @@ function Board(props) {
                 </div>
             </div>
             <div className="box-bottom">
-                <div className="count-graph">
-                    <div className="graph-top">
-                        <div>0</div><div>10</div>
-                    </div>
-                    <div className="graph-mid">===============</div>
-                    <div className="graph-bottom">
-                        <div>
-                            공석 : {personInfoList.length}명
-                        </div>
-                    </div>
-                </div>
+            <Graph type={type} personInfoList={personInfoList} />
             </div>
         </div>
     )

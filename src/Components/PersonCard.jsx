@@ -1,5 +1,5 @@
 function PersonCard(props) {
-    const { personInfo, button, onButtonClick} = props;
+    const { personInfo, button, onButtonClick } = props;
     const format = { hour: 'numeric', minute: 'numeric', hour12: true }; // 12시간 형식
     const timeString = personInfo.date.toLocaleTimeString('en-US', format);
     return (
@@ -9,7 +9,7 @@ function PersonCard(props) {
             </div>
             <div className="card-mid">
                 <div>{personInfo.userName}</div>
-                <div>{timeString}</div>
+                <div style={{ fontSize: "15px" , textAlign:"end", width:"85%"}}>{timeString}</div>
             </div>
         </div>
     );

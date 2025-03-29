@@ -20,13 +20,11 @@ function HomePage() {
     const movePersonOutIn = (person) => {
         setPersonOut((prev) => prev.filter((p) => p.userName !== person.userName));
         setPersonIn((prev) => [...prev, person]);
-        console.log(person_out)
     };
 
     const movePersonInOut = (person) => {
         setPersonIn((prev) => prev.filter((p) => p.userName !== person.userName));
         setPersonOut((prev) => [...prev, person]);
-        console.log(person_in)
     };
 
     return (

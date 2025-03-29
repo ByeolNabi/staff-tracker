@@ -44,19 +44,60 @@ header .contents .left {
   align-items: center;
 }
 
-.ham-menu {
-  font-size: 30px;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-}
-
 header h1 {
   font-size: 20px;
   color: #ffffff;
 }
 
+.ham-menu {
+  color: #ffffff;
+}
 
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 280px;
+  height: 100vh;
+
+  background-color: #FFFFFF;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  transition: right 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+.side-menu.open {
+  right: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(1px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
 
 main {
   display: flex;
@@ -135,11 +176,13 @@ main {
   align-items: center;
 }
 
-.card-top img{
+.card-top img {
   margin: 8px;
+  cursor: pointer;
 }
 
 /*
++, -문자를 버튼처럼 만들었던 것
 .card-top button {
   border-radius: 8px;
   border: 1px solid transparent;

@@ -45,6 +45,7 @@ header .contents .left {
 }
 
 header h1 {
+  cursor: pointer;
   font-size: 20px;
   color: #ffffff;
 }
@@ -117,6 +118,7 @@ header h1 {
 .side-main li {
   padding-block: 4px;
   padding-left: 10px;
+  cursor: pointer;
 }
 
 .close-btn {

@@ -1,6 +1,8 @@
 import { useState } from "react";
+import Button from "./Button";
 
 function Header() {
+    var userId, userPw;
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -19,12 +21,30 @@ function Header() {
             <div className={`overlay ${isOpen ? "open" : ""}`} onClick={() => setIsOpen(false)}></div>
 
             <div className={`side-menu ${isOpen ? "open" : ""}`}>
-                <button className="close-btn" onClick={() => setIsOpen(false)}>✖</button>
-                <ul>
-                    <li>메뉴 1</li>
-                    <li>메뉴 2</li>
-                    <li>메뉴 3</li>
-                </ul>
+
+                <div className="side-header">
+                    <div>관리자 로그인</div>
+                    <img className="close-btn" onClick={() => setIsOpen(false)} src="/close-sidemenu.svg" />
+                </div>
+                <div className="border-line" style={{ background: "#D9D9D9", height: "1px", width: "100vh", position:"fixed", right:"0px" , top:"66px"}} />
+                <div className="side-main">
+                    <input
+                        className="user-input"
+                        type="text"
+                        placeholder="아이디"
+                        value={userId}
+                        name="Id"
+                    />
+                    <input
+                        className="user-input"
+                        type="text"
+                        placeholder="아이디"
+                        value={userPw}
+                        name="Pw"
+                    />
+                    <Button text={"로그인"}/>
+                </div>
+
             </div>
         </header>
     )

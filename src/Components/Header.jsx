@@ -4,6 +4,7 @@ import Button from "./Button";
 function Header() {
     var userId, userPw;
     const [isOpen, setIsOpen] = useState(false);
+    const [isLogin, setIsLogin] = useState(false);
 
     return (
         <header>
@@ -20,32 +21,46 @@ function Header() {
 
             <div className={`overlay ${isOpen ? "open" : ""}`} onClick={() => setIsOpen(false)}></div>
 
-            <div className={`side-menu ${isOpen ? "open" : ""}`}>
-
-                <div className="side-header">
-                    <div>관리자 로그인</div>
-                    <img className="close-btn" onClick={() => setIsOpen(false)} src="/close-sidemenu.svg" />
+            {isLogin ?
+                <div className={`side-menu ${isOpen ? "open" : ""}`}>
+                    <div className="side-header">
+                        <div>관리자 로그인</div>
+                        <img className="close-btn" onClick={() => setIsOpen(false)} src="/close-sidemenu.svg" />
+                    </div>
+                    <div className="border-line" style={{ background: "#D9D9D9", height: "1px", width: "100vh", position: "fixed", right: "0px", top: "66px" }} />
+                    <div className="side-main">
+                        <input
+                            className="user-input"
+                            type="text"
+                            placeholder="아이디"
+                            value={userId}
+                            name="Id"
+                        />
+                        <input
+                            className="user-input"
+                            type="text"
+                            placeholder="아이디"
+                            value={userPw}
+                            name="Pw"
+                        />
+                        <Button text={"로그인"} />
+                    </div>
                 </div>
-                <div className="border-line" style={{ background: "#D9D9D9", height: "1px", width: "100vh", position:"fixed", right:"0px" , top:"66px"}} />
-                <div className="side-main">
-                    <input
-                        className="user-input"
-                        type="text"
-                        placeholder="아이디"
-                        value={userId}
-                        name="Id"
-                    />
-                    <input
-                        className="user-input"
-                        type="text"
-                        placeholder="아이디"
-                        value={userPw}
-                        name="Pw"
-                    />
-                    <Button text={"로그인"}/>
-                </div>
+                :
+                <div className={`side-menu ${isOpen ? "open" : ""}`}>
+                    <div className="side-header">
+                        <div>Admin님 안녕하세요.</div>
+                        <img className="close-btn" onClick={() => setIsOpen(false)} src="/close-sidemenu.svg" />
+                    </div>
+                    <div className="border-line" style={{ background: "#D9D9D9", height: "1px", width: "100vh", position: "fixed", right: "0px", top: "66px" }} />
+                    <div className="side-main">
+                        <ul>
+                            <li style={{ listStyleImage: "url('/person.svg')" }}>인원 변경</li>
+                            <li style={{ listStyleImage: "url('/calendar.svg')" }}>일자별 기록 확인</li>
+                        </ul>
 
-            </div>
+                    </div>
+                </div>}
         </header>
     )
 }

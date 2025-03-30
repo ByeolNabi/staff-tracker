@@ -96,21 +96,31 @@ header h1 {
   height: 66px;
   padding: 20px;
   margin-top: 3px;
-  font-weight:bold;
+  font-weight: bold;
 }
 
 .side-main {
   display: flex;
   flex-direction: column;
+  justify-content: end;
   gap: 10px;
+  padding-inline: 20px;
+}
+
+.side-main ul {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  padding-left: 20px
+}
+
+.side-main li {
+  padding-block: 4px;
+  padding-left: 10px;
 }
 
 .close-btn {
   cursor: pointer;
-}
-
-.side-main {
-  padding: 20px;
 }
 
 main {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Board from "../Components/Board";
+import Board from "../components/Board";
 
 function HomePage() {
     const type_out = { name: "부재중", button: "+" };

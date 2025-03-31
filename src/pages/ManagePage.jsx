@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BoardManage from "../Components/BoardManage";
+import BoardManage from "../components/BoardManage";
 
 function ManagePage() {
     const type = { name: "현재 인원:", button: "-" };

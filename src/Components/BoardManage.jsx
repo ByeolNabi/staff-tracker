@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PersonCard from "../Components/PersonCard";
+import PersonCard from "../components/PersonCard";
 
 function BoardManage(props) {
     const { type, personInfoList, onButtonClick } = props

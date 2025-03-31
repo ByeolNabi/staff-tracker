@@ -1,11 +1,11 @@
 import './App.css'
 import { BrowserRouter } from "react-router";
 import { Routes, Route } from 'react-router-dom';
-import Header from './Components/Header'
+import Header from './components/Header'
 import HomePage from './pages/Homepage'
 import ManagePage from './pages/ManagePage';
 import DashboardPage from './pages/DashboardPage';
-
+``
 function App() {
 
   return (

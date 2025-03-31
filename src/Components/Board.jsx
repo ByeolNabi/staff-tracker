@@ -1,4 +1,4 @@
-import PersonCard from "../Components/PersonCard";
+import PersonCard from "../components/PersonCard";
 import Graph from "./Graph";
 
 function Board(props) {

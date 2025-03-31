@@ -4,6 +4,7 @@ function PersonCard(props) {
     const timeString = personInfo.date.toLocaleTimeString('en-US', format);
 
     const img_path = button == '+' ? '/plus-button.svg' : '/minus-button.svg'
+    
     return (
         <div className="person-card" draggable>
             <div className="card-top">

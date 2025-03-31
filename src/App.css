@@ -146,7 +146,7 @@ main {
   flex-grow: 1;
 }
 
-.go-space {
+.board-space {
   width: 100%;
   height: 50%;
   /* main 영역의 절반 차지 */
@@ -168,7 +168,13 @@ main {
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
+}
+
+.box-mid {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
 }
 
 .box-top {

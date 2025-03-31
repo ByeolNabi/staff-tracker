@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import Button from "./Button";
 
 function Header() {
     const navigate = useNavigate()
@@ -51,7 +50,7 @@ function Header() {
                             value={userPw}
                             name="Pw"
                         />
-                        <Button text={"로그인"} />
+                        <button>로그인</button>
                     </div>
                 </div>
                 :

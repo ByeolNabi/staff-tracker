@@ -6,6 +6,7 @@ function Header() {
     const navigate = useNavigate()
     const handleClick = (url) => {
         navigate(url);
+        setIsOpen(false)
     }
 
     var userId, userPw;
@@ -18,7 +19,7 @@ function Header() {
             <div className="contents">
                 <div className="left">
                     <img src="/under-phase.svg" style={{ width: '28px', height: '28px' }} />
-                    <h1 onClick={()=>handleClick('/')} >&nbsp;┃&nbsp;사무실 현황</h1></div>
+                    &nbsp;┃&nbsp;<h1 onClick={() => handleClick('/')} >사무실 현황</h1></div>
                 <div className="right">
                     <img className="ham-menu" src="/hamburger.svg"
                         onClick={() => setIsOpen(!isOpen)}
@@ -62,10 +63,9 @@ function Header() {
                     <div className="border-line" style={{ background: "#D9D9D9", height: "1px", width: "100vh", position: "fixed", right: "0px", top: "66px" }} />
                     <div className="side-main">
                         <ul>
-                            <li style={{ listStyleImage: "url('/person.svg')" }} onClick={() => handleClick('/manage')}>인원 변경</li>
-                            <li style={{ listStyleImage: "url('/calendar.svg')" }} onClick={() => handleClick('/dashboard')}>일자별 기록 확인</li>
+                            <li onClick={() => handleClick('/manage')}><img src="/person.svg" />인원 변경</li>
+                            <li onClick={() => handleClick('/dashboard')}><img src="/calendar.svg" />일자별 기록 확인</li>
                         </ul>
-
                     </div>
                 </div>}
         </header>

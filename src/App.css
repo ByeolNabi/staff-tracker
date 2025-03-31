@@ -44,6 +44,11 @@ header .contents .left {
   align-items: center;
 }
 
+header .left {
+  font-size: 20px;
+  color: #ffffff;
+}
+
 header h1 {
   cursor: pointer;
   font-size: 20px;
@@ -105,20 +110,29 @@ header h1 {
   flex-direction: column;
   justify-content: end;
   gap: 10px;
-  padding-inline: 20px;
+  padding-inline: 10px;
 }
 
 .side-main ul {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   text-align: left;
-  padding-left: 20px
+  list-style-type: none;
+  padding: 10px;
+  margin: 0px;
 }
 
 .side-main li {
-  padding-block: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-block: 6px;
   padding-left: 10px;
   cursor: pointer;
+}
+
+.side-main img {
+  width: 18px;
 }
 
 .close-btn {

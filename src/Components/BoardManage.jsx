@@ -61,7 +61,7 @@ function BoardManage(props) {
         <div className="box">
             <div className="box-top">
                 <div>{type.name}</div>
-                <div>{today.toLocaleDateString('ko-KR')}</div>
+                <div>7명</div>
             </div>
             <div className="box-mid">
                 <div className="deck">

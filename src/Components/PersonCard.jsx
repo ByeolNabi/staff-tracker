@@ -1,6 +1,6 @@
 function PersonCard(props) {
     const { personInfo, button, onButtonClick } = props;
-    const format = { hour: 'numeric', minute: 'numeric', hour12: true }; // 12시간 형식
+    const format = { hour: 'numeric', minute: 'numeric', hour12: false }; // 12시간 형식
     const timeString = personInfo.date.toLocaleTimeString('en-US', format);
 
     const img_path = button == '+' ? '/plus-button.svg' : '/minus-button.svg'

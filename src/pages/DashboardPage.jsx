@@ -1,7 +1,18 @@
+import Dashboard from "../components/Dashboard";
+import PersonDetail from "../components/PersonDetail";
+
 function DashboardPage() {
     return (
         <>
-            대시보드 예정
+            <main>
+                <div className="board-space">
+                    <Dashboard />
+                </div>
+                <div className="board-space">
+                    <PersonDetail />
+                </div>
+
+            </main>
         </>
     );
 }

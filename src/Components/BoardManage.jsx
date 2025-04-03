@@ -8,7 +8,7 @@ function BoardManage(props) {
     /* 모달 on off를 위한 변수 */
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-    const [personInfo, setPersonInfo] = useState(null);
+    const [personInfo, setPersonInfo] = useState({ userName: "더미" });
     const handleAddModal = (bool) => {
         setIsAddModalOpen(bool)
     }
@@ -26,36 +26,25 @@ function BoardManage(props) {
 
     function AddModal() {
         return (
-            <div style={modalStyle}>
+            <div className={`modal ${isAddModalOpen && "open"}`} >
                 사람추가 모달
-                <button onClick={() => handleAddModal(false)}>추가</button>
+                < button onClick={() => handleAddModal(false)
+                }> 추가</button >
                 <button onClick={() => handleAddModal(false)}>취소</button>
-            </div>
+            </div >
         )
     }
 
     function DeleteModal() {
         return (
-            <div style={modalStyle}>
-                {personInfo.userName} 직원을 삭제하시겠습니까?
+            <div className={`modal ${isDeleteModalOpen && "open"}`}>
+                {personInfo.userName} 직원을 삭제하시겠습니까 ?
 
                 <button onClick={() => yesButtonClick(personInfo)}>예</button>
                 <button onClick={() => handleDeleteModal(false)}>아니요</button>
-            </div>
+            </div >
         )
     }
-
-    const modalStyle = {
-        position: "fixed",
-        top: "35%",
-        left: `${(400 - 360) / 2}px`,
-        zIndex: 1000,
-        width: 360,
-        height: 280,
-        backgroundColor: "#FFFFFF",
-        boxShadow: "-2px 0 5px rgba(0, 0, 0, 0.2)",
-        borderRadius: "10px",
-    };
 
     return (
         <div className="box">
@@ -80,8 +69,8 @@ function BoardManage(props) {
             </div>
             <div className={`overlay ${isAddModalOpen || isDeleteModalOpen ? "open" : ""}`}
                 onClick={() => { setIsAddModalOpen(false); setIsDeleteModalOpen(false) }}></div>
-            {isAddModalOpen && <AddModal />}
-            {isDeleteModalOpen && < DeleteModal />}
+            <AddModal />
+            < DeleteModal />
         </div >
     )
 }

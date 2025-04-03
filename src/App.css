@@ -301,3 +301,23 @@ main {
   width: 100%;
   padding: 5px;
 }
+
+.modal {
+  position: fixed;
+  top: 35%;
+  left: 20px;
+  z-index: 1000;
+  width: 360px;
+  height: 280px;
+  background-color: #FFFFFF;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.modal.open {
+  opacity: 1;
+  visibility: visible;
+}

@@ -304,7 +304,7 @@ main {
 
 .modal {
   position: fixed;
-  top: 35%;
+  top: 280px;
   left: 20px;
   z-index: 1000;
   width: 360px;
@@ -314,7 +314,7 @@ main {
   border-radius: 10px;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out;
 }
 
 .modal.open {

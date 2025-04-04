@@ -28,7 +28,7 @@ function BoardManage(props) {
         return (
             <div className={`modal ${isAddModalOpen && "open"}`} >
                 사람추가 모달
-                < button onClick={() => handleAddModal(false)
+                <button onClick={() => handleAddModal(false)
                 }> 추가</button >
                 <button onClick={() => handleAddModal(false)}>취소</button>
             </div >
@@ -70,12 +70,9 @@ function BoardManage(props) {
             <div className={`overlay ${isAddModalOpen || isDeleteModalOpen ? "open" : ""}`}
                 onClick={() => { setIsAddModalOpen(false); setIsDeleteModalOpen(false) }}></div>
             <AddModal />
-            < DeleteModal />
+            <DeleteModal />
         </div >
     )
 }
-
-
-
 
 export default BoardManage;

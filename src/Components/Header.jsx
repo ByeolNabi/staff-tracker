@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import AuthContext from "../context/AuthContext";
+import api from "../services/api";
 
 function Header() {
     const navigate = useNavigate()
@@ -8,10 +10,40 @@ function Header() {
         setIsOpen(false)
     }
 
-    var userId, userPw;
+    const [credentials, setCredentials] = useState({
+        id: '',
+        pw: ''
+    });
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const [isLogin, setIsLogin] = useState(false);
+    var { auth, setAuth, logout } = useContext(AuthContext)
+    const isLogin = (auth.token == null) ? false : true
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setCredentials(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError('');
+        setLoading(true);
+        try {
+            const response = await api.login(credentials);
+            // 로그인 성공 시 토큰 저장 및 상태 업데이트
+            localStorage.setItem('token', response.token);
+            setAuth({ token: response.token, isAuthenticated: true });
+        } catch (err) {
+            setError(err.response?.data?.message || '로그인 중 오류가 발생했습니다.');
+        } finally {
+            setLoading(false);
+            setCredentials({ id: '', pw: '' })
+        }
+    };
 
     return (
         <header>
@@ -31,33 +63,8 @@ function Header() {
             {isLogin ?
                 <div className={`side-menu ${isOpen ? "open" : ""}`}>
                     <div className="side-header">
-                        <div>관리자 로그인</div>
-                        <img className="close-btn" onClick={() => setIsOpen(false)} src="/close-sidemenu.svg" />
-                    </div>
-                    <div className="border-line" style={{ background: "#D9D9D9", height: "1px", width: "100vh", position: "fixed", right: "0px", top: "66px" }} />
-                    <div className="side-main">
-                        <input
-                            className="user-input"
-                            type="text"
-                            placeholder="아이디"
-                            value={userId}
-                            name="Id"
-                        />
-                        <input
-                            className="user-input"
-                            type="text"
-                            placeholder="아이디"
-                            value={userPw}
-                            name="Pw"
-                        />
-                        <button>로그인</button>
-                    </div>
-                </div>
-                :
-                <div className={`side-menu ${isOpen ? "open" : ""}`}>
-                    <div className="side-header">
                         <div>Admin님 안녕하세요.</div>
-                        <img className="close-btn" onClick={() => setIsOpen(false)} src="/close-sidemenu.svg" />
+                        <img className="close-btn" onClick={() => logout()} src="/close-sidemenu.svg" />
                     </div>
                     <div className="border-line" style={{ background: "#D9D9D9", height: "1px", width: "100vh", position: "fixed", right: "0px", top: "66px" }} />
                     <div className="side-main">
@@ -66,7 +73,37 @@ function Header() {
                             <li onClick={() => handleClick('/dashboard')}><img src="/calendar.svg" />일자별 기록 확인</li>
                         </ul>
                     </div>
-                </div>}
+                </div>
+                :
+                <div className={`side-menu ${isOpen ? "open" : ""}`}>
+                    <div className="side-header">
+                        <div>관리자 로그인</div>
+                    </div>
+                    <div className="border-line" style={{ background: "#D9D9D9", height: "1px", width: "100vh", position: "fixed", right: "0px", top: "66px" }} />
+                    {error && <div className="error-message">{error}</div>}
+                    <form className="side-main" onSubmit={handleSubmit}>
+                        <input
+                            className="user-input"
+                            type="text"
+                            placeholder="아이디"
+                            value={credentials.id}
+                            onChange={handleChange}
+                            id="id"
+                            name="id"
+                        />
+                        <input
+                            className="user-input"
+                            type="password"
+                            placeholder="비밀번호"
+                            value={credentials.pw}
+                            onChange={handleChange}
+                            id="pw"
+                            name="pw"
+                        />
+                        <button>{loading ? "로그인 중..." : '로그인'}</button>
+                    </form>
+                </div>
+            }
         </header>
     )
 }

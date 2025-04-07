@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PersonCard from "../components/PersonCard";
+import api from "../services/api";
 
 function BoardManage(props) {
     const { type, personInfoList, onButtonClick } = props
@@ -25,12 +26,52 @@ function BoardManage(props) {
     }
 
     function AddModal() {
+        const [dataForm, setdataForm] = useState({
+            person_name: '',
+            admin_pw: ''
+        });
+        const handleChange = (e) => {
+            const { name, value } = e.target;
+
+            setdataForm(prev => ({
+                ...prev,
+                [name]: value
+            }));
+        };
+        const handleSubmit = async (e) => {
+            e.preventDefault();
+            try {
+                const response = await api.addPerson(dataForm);
+                handleAddModal(false)
+            } catch (err) {
+            } finally {
+            }
+        }
+
         return (
             <div className={`modal ${isAddModalOpen && "open"}`} >
-                사람추가 모달
-                <button onClick={() => handleAddModal(false)
-                }> 추가</button >
-                <button onClick={() => handleAddModal(false)}>취소</button>
+                <form className="side-main" onSubmit={handleSubmit}>
+                    <input
+                        className="user-input"
+                        type="text"
+                        placeholder="추가할 이름"
+                        value={dataForm.person_name}
+                        onChange={handleChange}
+                        id="person_name"
+                        name="person_name"
+                    />
+                    <input
+                        className="user-input"
+                        type="password"
+                        placeholder="관리자 암호"
+                        value={dataForm.admin_pw}
+                        onChange={handleChange}
+                        id="admin_pw"
+                        name="admin_pw"
+                    />
+                    <button type="submit"> 추가</button >
+                    <button type="button" onClick={() => handleAddModal(false)}>취소</button>
+                </form>
             </div >
         )
     }

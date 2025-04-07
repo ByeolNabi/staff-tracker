@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://192.168.0.22:3000/api';
+const API_URL = 'http://localhost:3000/api';
 
 // API 요청을 위한 axios 인스턴스 생성
 const axiosInstance = axios.create({

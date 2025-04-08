@@ -8,6 +8,7 @@ function HomePage() {
     const type_in = { name: "근무중", button: "-" };
     const { auth } = useContext(AuthContext);
 
+    const [personTotal, setPersonTotal] = useState([]);
     const [personOut, setPersonOut] = useState([]);
     const [personIn, setPersonIn] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -16,8 +17,10 @@ function HomePage() {
     // 백엔드에서 직원 데이터를 가져오는 함수
     const fetchPersonData = async () => {
         try {
+            console.log("fetchPersonData")
             setLoading(true);
             const data = await api.getPersons();
+            setPersonTotal(data.length)
 
             // 백엔드 데이터를 personIn/personOut으로 분류
             const outPersons = [];
@@ -53,24 +56,26 @@ function HomePage() {
     // 컴포넌트 마운트 시 데이터 로드
     useEffect(() => {
         fetchPersonData();
-
+        
         // 30초마다 데이터 갱신
         const intervalId = setInterval(() => {
             fetchPersonData();
         }, 30000);
-
+        
         return () => clearInterval(intervalId);
     }, []);
 
     // 상태 변경: 부재중 → 근무중
     const movePersonOutIn = async (person) => {
         try {
+            // 낙관적 UI 업데이트
+            setPersonOut(prev => prev.filter(p => p.userName !== person.userName));
+            setPersonIn(prev => [...prev, { ...person, date: new Date() }]);
+
+            console.log("movePersonOutIn")
             // API 호출로 서버 상태 업데이트 및 출근 기록
             await api.recordAttendance(person.userName, true); // true = 'in'
 
-            // 로컬 상태 업데이트
-            setPersonOut(prev => prev.filter(p => p.userName !== person.userName));
-            setPersonIn(prev => [...prev, { ...person, date: new Date() }]);
         } catch (err) {
             console.error("출근 처리 중 오류:", err);
             alert("출근 상태 변경에 실패했습니다.");
@@ -79,13 +84,15 @@ function HomePage() {
 
     // 상태 변경: 근무중 → 부재중
     const movePersonInOut = async (person) => {
+        console.log("movePersonInOut")
         try {
+            // 낙관적 UI 업데이트
+            setPersonIn(prev => prev.filter(p => p.userName !== person.userName));
+            setPersonOut(prev => [...prev, { ...person, date: new Date() }]);
+
             // API 호출로 서버 상태 업데이트 및 퇴근 기록
             await api.recordAttendance(person.userName, false); // false = 'out'
 
-            // 로컬 상태 업데이트
-            setPersonIn(prev => prev.filter(p => p.userName !== person.userName));
-            setPersonOut(prev => [...prev, { ...person, date: new Date() }]);
         } catch (err) {
             console.error("퇴근 처리 중 오류:", err);
             alert("퇴근 상태 변경에 실패했습니다.");
@@ -109,6 +116,7 @@ function HomePage() {
                             <Board
                                 type={type_out}
                                 personInfoList={personOut}
+                                personTotal={personTotal}
                                 onButtonClick={movePersonOutIn}
                             />
                         </div>
@@ -116,6 +124,7 @@ function HomePage() {
                             <Board
                                 type={type_in}
                                 personInfoList={personIn}
+                                personTotal={personTotal}
                                 onButtonClick={movePersonInOut}
                             />
                         </div>

@@ -7,7 +7,8 @@ const axiosInstance = axios.create({
   baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json'
-  }
+  },
+  credentials: "include", // 쿠키 포함
 });
 
 // 요청 인터셉터 - 토큰이 있으면 헤더에 추가
@@ -72,7 +73,7 @@ const api = {
   recordAttendance: async (personName, isPresent) => {
     const response = await axiosInstance.post('/attendance/record', {
       person_name: personName,
-      record_type: isPresent ? 'in' : 'out'
+      record_type: isPresent
     });
     return response.data;
   },

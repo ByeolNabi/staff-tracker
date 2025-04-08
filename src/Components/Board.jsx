@@ -2,7 +2,7 @@ import PersonCard from "../components/PersonCard";
 import Graph from "./Graph";
 
 function Board(props) {
-    const { type, personInfoList, onButtonClick } = props
+    const { type, personInfoList, onButtonClick, personTotal } = props
     const today = new Date()
 
     return (
@@ -24,7 +24,7 @@ function Board(props) {
                 </div>
             </div>
             <div className="box-bottom">
-                <Graph type={type} personInfoList={personInfoList} />
+                <Graph type={type} personInfoList={personInfoList} personTotal = {personTotal} />
             </div>
         </div>
     )

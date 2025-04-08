@@ -56,25 +56,20 @@ function HomePage() {
     // 컴포넌트 마운트 시 데이터 로드
     useEffect(() => {
         fetchPersonData();
-        
-        // 30초마다 데이터 갱신
-        const intervalId = setInterval(() => {
-            fetchPersonData();
-        }, 30000);
-        
-        return () => clearInterval(intervalId);
     }, []);
 
     // 상태 변경: 부재중 → 근무중
     const movePersonOutIn = async (person) => {
         try {
             // 낙관적 UI 업데이트
-            setPersonOut(prev => prev.filter(p => p.userName !== person.userName));
-            setPersonIn(prev => [...prev, { ...person, date: new Date() }]);
+            // setPersonOut(prev => prev.filter(p => p.userName !== person.userName));
+            // setPersonIn(prev => [...prev, { ...person, date: new Date() }]);
 
             console.log("movePersonOutIn")
             // API 호출로 서버 상태 업데이트 및 출근 기록
             await api.recordAttendance(person.userName, true); // true = 'in'
+
+            await fetchPersonData();
 
         } catch (err) {
             console.error("출근 처리 중 오류:", err);
@@ -87,11 +82,13 @@ function HomePage() {
         console.log("movePersonInOut")
         try {
             // 낙관적 UI 업데이트
-            setPersonIn(prev => prev.filter(p => p.userName !== person.userName));
-            setPersonOut(prev => [...prev, { ...person, date: new Date() }]);
+            // setPersonIn(prev => prev.filter(p => p.userName !== person.userName));
+            // setPersonOut(prev => [...prev, { ...person, date: new Date() }]);
 
             // API 호출로 서버 상태 업데이트 및 퇴근 기록
             await api.recordAttendance(person.userName, false); // false = 'out'
+
+            await fetchPersonData();
 
         } catch (err) {
             console.error("퇴근 처리 중 오류:", err);

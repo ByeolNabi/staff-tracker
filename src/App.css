@@ -322,9 +322,24 @@ main {
   visibility: visible;
 }
 
+.dashboard>.box-top {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  margin-right:3px;
+}
+
+.dashboard>.box-mid {
+  flex-grow: 1;
+}
+
 .attendance-card {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
 
+.attendance-card > div {
 }

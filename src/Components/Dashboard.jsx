@@ -5,9 +5,9 @@ const days = [
     "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
 ]
 
-function Dashboard() {
+function Dashboard(props) {
+    const { setCrtPerson } = props;
     const [weeklyAttendance, setWeeklyAttendance] = useState('')
-
 
     const fetchAttendanceData = async () => {
         try {
@@ -27,7 +27,7 @@ function Dashboard() {
     return (
         <div className="box dashboard">
             <div className="box-top">
-                <span>이름</span>
+                <span style={{ width: "62px" }}>이름</span>
                 <span>월</span>
                 <span>화</span>
                 <span>수</span>
@@ -36,16 +36,21 @@ function Dashboard() {
                 <span>토</span>
                 <span>일</span>
             </div>
+            <div className="line" style={{ height: "1px", backgroundColor: "#D9D9D9" }}></div>
             <div className="box-mid">
                 {
                     Object.keys(weeklyAttendance).map((name, idx) => {
                         return (
+
                             <div className="attendance-card" key={idx} >
-                                <div className="name">{name}</div>
+                                <div className="name" style={{ width: "62px" }} onClick={() => { setCrtPerson(name) }}>{name}</div>
                                 {days.map((day, idx) => {
                                     return (
                                         <div key={idx}>
-                                            {weeklyAttendance[name][day] ? "출석" : "휴식"}
+                                            {
+                                                weeklyAttendance[name][day] ?
+                                                    <img src="/public/checked.svg" /> : <img src="/public/check.svg" />
+                                            }
                                         </div>
                                     )
                                 })}

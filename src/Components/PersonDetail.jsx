@@ -4,10 +4,10 @@ function PersonDetail() {
         <div className="box">
             <div className="box-top">
                 <div>김대규</div>
-                <div>생선</div>
+                <div>날짜</div>
             </div>
             <div className="box-mid">
-                어 그랜
+                그래프
             </div>
         </div>
     )

@@ -49,25 +49,6 @@ const api = {
     return response.data;
   },
 
-  // 출퇴근 기록 조회
-  getAttendance: async (personName) => {
-    const response = await axiosInstance.get(`/attendance/${personName}`);
-    return response.data;
-  },
-
-  // 요일별 출퇴근 현황
-  getWeeklyAttendance: async (personName) => {
-    const response = await axiosInstance.get(`/attendance/weekly/${personName}`);
-    return response.data;
-  },
-
-  // 24시간 타임라인 데이터
-  getTimeline: async (personName, date) => {
-    const response = await axiosInstance.get(`/attendance/timeline/${personName}`, {
-      params: { date }
-    });
-    return response.data;
-  },
 
   // 출퇴근 기록하기
   recordAttendance: async (personName, isPresent) => {
@@ -77,6 +58,19 @@ const api = {
     });
     return response.data;
   },
+
+  // 요일별 출퇴근 현황
+  getWeeklyAttendance: async () => {
+    const response = await axiosInstance.get(`/attendance/weekly/`);
+    return response.data;
+  },
+
+  // 출퇴근 기록 조회
+  getAttendance: async (personName) => {
+    const response = await axiosInstance.get(`/attendance/${personName}`);
+    return response.data;
+  },
+
 
 };
 

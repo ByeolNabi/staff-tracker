@@ -321,3 +321,10 @@ main {
   opacity: 1;
   visibility: visible;
 }
+
+.attendance-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}

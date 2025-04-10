@@ -38,26 +38,28 @@ function Dashboard(props) {
             </div>
             <div className="line" style={{ height: "1px", backgroundColor: "#D9D9D9" }}></div>
             <div className="box-mid">
-                {
-                    Object.keys(weeklyAttendance).map((name, idx) => {
-                        return (
+                <div className="attendance-deck">
+                    {
+                        Object.keys(weeklyAttendance).map((name, idx) => {
+                            return (
 
-                            <div className="attendance-card" key={idx} >
-                                <div className="name" style={{ width: "62px" }} onClick={() => { setCrtPerson(name) }}>{name}</div>
-                                {days.map((day, idx) => {
-                                    return (
-                                        <div key={idx}>
-                                            {
-                                                weeklyAttendance[name][day] ?
-                                                    <img src="/public/checked.svg" /> : <img src="/public/check.svg" />
-                                            }
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                        )
-                    })
-                }
+                                <div className="attendance-card" key={idx} >
+                                    <div className="name" style={{ width: "62px" }} onClick={() => { setCrtPerson(name) }}>{name}</div>
+                                    {days.map((day, idx) => {
+                                        return (
+                                            <div key={idx}>
+                                                {
+                                                    weeklyAttendance[name][day] ?
+                                                        <img src="/public/checked.svg" /> : <img src="/public/check.svg" />
+                                                }
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            )
+                        })
+                    }
+                </div>
             </div>
         </div>
     )

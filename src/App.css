@@ -83,7 +83,7 @@ header h1 {
   right: -280px;
   width: 280px;
   height: 100vh;
-
+  z-index:1000;
   background-color: #FFFFFF;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
   transition: right 0.3s ease-in-out;
@@ -326,7 +326,9 @@ main {
   display: flex;
   justify-content: space-between;
   height: 30px;
-  margin-right:3px;
+  margin-right: 2px;
+  padding-right: 8px;
+
 }
 
 .dashboard>.box-mid {
@@ -339,7 +341,14 @@ main {
   justify-content: space-between;
   align-items: center;
   height: 50px;
+  padding-right: 8px;
 }
 
-.attendance-card > div {
+.attendance-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 180px;
+  overflow-y: auto;
+  padding-top: 10px;
 }

@@ -129,12 +129,10 @@ function PersonDetail(props) {
             flexDirection: 'column',
             marginBottom: '20px',
             position: 'relative',
-            height: '20px'
         },
         timeLabels: {
             position: 'relative',
             width: '100%',
-            height: '20px',
             marginLeft: '30px',
             marginRight: '3px'  // 우측 여백 추가
         },
@@ -147,7 +145,7 @@ function PersonDetail(props) {
         timelineContainer: {
             display: 'flex',
             flexDirection: 'column',
-            gap: '12px',
+            gap: '8px',
             height: '200px',
             overflowY: 'auto'
         },
@@ -219,7 +217,6 @@ function PersonDetail(props) {
                 ) : (
                     <>
                         <div style={styles.timelineHeader}>
-                            <div style={styles.boldText}>주간 출근 현황</div>
                             <div style={styles.timeLabels}>
                                 {timeLabels.map((item, index) => (
                                     <div 
@@ -228,7 +225,7 @@ function PersonDetail(props) {
                                             ...styles.timeLabel,
                                             // 각 레이블의 정확한 위치 계산 (24시간 블록에 맞춤)
                                             left: `${(item.position / 26) * 98}%`,
-                                            top: "-10px"
+                                            top: "3px"
                                         }}
                                     >
                                         {item.label}

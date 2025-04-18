@@ -50,7 +50,7 @@ function Dashboard(props) {
                                             <div key={idx}>
                                                 {
                                                     weeklyAttendance[name][day] ?
-                                                        <img src="/public/checked.svg" /> : <img src="/public/check.svg" />
+                                                        <img src="/checked.svg" /> : <img src="/check.svg" />
                                                 }
                                             </div>
                                         )
